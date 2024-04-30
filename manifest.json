@@ -1,16 +1,13 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Base64 Decoder",
   "version": "1.0",
   "description": "Decode base64 strings from right-click menu.",
   "permissions": [
-    "contextMenus"
+    "contextMenus",
+    "clipboardWrite"
   ],
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": false
-  },
-  "browser_action": {
+  "action": {
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icon16.png",
@@ -23,6 +20,11 @@
     "48": "icon48.png",
     "128": "icon128.png"
   },
- "content_security_policy": "script-src 'self'; object-src 'self';"
-
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_security_policy": {
+    "script-src": "'self'",
+    "object-src": "'self'"
+  }
 }
