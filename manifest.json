@@ -5,7 +5,8 @@
   "description": "Decode base64 strings from right-click menu.",
   "permissions": [
     "contextMenus",
-    "clipboardWrite"
+    "clipboardWrite",
+    "activeTab"
   ],
   "action": {
     "default_popup": "popup.html",
@@ -23,6 +24,12 @@
   "background": {
     "service_worker": "background.js"
   },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
   "content_security_policy": {
     "script-src": "'self'",
     "object-src": "'self'"
